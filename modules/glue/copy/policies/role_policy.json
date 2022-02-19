@@ -1,0 +1,73 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowCloudWatchMetrics",
+            "Effect": "Allow",
+            "Action": [
+                "cloudwatch:PutMetricData"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowCloudWatchLogs",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:*:/aws-glue/*"
+            ]
+        },
+        {
+            "Sid": "AllowSourceS3BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "${source_bucket_arn}",
+                "${source_bucket_arn}/*"
+            ]
+        },
+        {
+            "Sid": "AllowSourceKMSKeyAccess",
+            "Effect": "Allow",
+            "Action": [
+                "kms:DescribeKey",
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "${source_kms_key_arn}"
+            ]
+        },
+        {
+            "Sid": "AllowTargetS3BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "${target_bucket_arn}",
+                "${target_bucket_arn}/*"
+            ]
+        },
+        {
+            "Sid": "AllowTargetKMSKeyAccess",
+            "Effect": "Allow",
+            "Action": [
+                "kms:DescribeKey",
+                "kms:Decrypt"
+            ],
+            "Resource": [
+                "${target_kms_key_arn}"
+            ]
+        }
+    ]
+}
