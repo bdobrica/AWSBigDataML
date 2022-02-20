@@ -25,8 +25,8 @@ def main():
     args = get_glue_args([
         'JOB_NAME',
         'SOURCE_BUCKET',
-        'MAPPING_BUCKET',
-        'MAPPING_KEY',
+        'PROCESSOR_BUCKET',
+        'PROCESSOR_KEY',
         'SCHEMA_BUCKET',
         'SCHEMA_KEY',
         'TARGET_BUCKET'

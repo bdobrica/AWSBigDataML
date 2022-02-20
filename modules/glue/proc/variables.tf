@@ -29,7 +29,7 @@ variable "script_bucket" {
 variable "script_key" {
   type = string
   description = "The key from the bucket to store the script of the glue job."
-  default = "glue/scripts/copy.py"
+  default = "glue/scripts/proc.py"
 }
 
 variable "script_kms_key" {
@@ -37,21 +37,21 @@ variable "script_kms_key" {
   description = "The KMS key Arn to encrypt the script of the glue job."
 }
 
-variable "mappings_bucket" {
+variable "processor_bucket" {
   type = string
-  description = "The name of the bucket to store the mappings for the glue job. If missing, script_bucket will be used."
+  description = "The name of the bucket to store the processors for the glue job. If missing, script_bucket will be used."
   default = ""
 }
 
-variable "mappings_key" {
+variable "processor_key" {
   type = string
-  description = "The key from the bucket to store the mappings for the glue job."
-  default = "glue/mappings"
+  description = "The key from the bucket to store the processors for the glue job."
+  default = "glue/processors"
 }
 
-variable "mappings_kms_key" {
+variable "processor_kms_key" {
   type = string
-  description = "The KMS key Arn to encrypt the mappings for the glue job. If missing, the script_kms_key will be used."
+  description = "The KMS key Arn to encrypt the processors for the glue job. If missing, the script_kms_key will be used."
   default = ""
 }
 
